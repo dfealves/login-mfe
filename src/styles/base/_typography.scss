@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+$font: "Inter", sans-serif;
+
+$font-size-body: 20px;
+
+$font-size-medium: 16px;
+
+$font-size-small: 12px;
+
+.font-bold {
+  font-family: $font;
+  font-weight: 600;
+  font-style: normal;
+}

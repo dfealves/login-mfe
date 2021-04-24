@@ -1,0 +1,47 @@
+<div class="container-fluid d-flex align-items-center justify-content-around">
+  <div class="pb-2">
+    <div class="bg-atlas" [ngStyle]="{'background-image': 'url('+ logoUrl + ')'}">
+      <!-- <img [src]="logoUrl" alt=""> -->
+    </div>
+  </div>
+  <div class="">
+    <div class="form-container">
+      <div class="d-flex">
+        <img [src]="logoWhiteUrl" alt="">
+        <h5 class="title-logo ml-2">AtlasWare <span>2.0</span></h5>
+      </div>
+
+      <h6 class="font-bold mt-3">Bem vindo</h6>
+      <p>Faça seu login</p>
+
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="form-group">
+          <input formControlName="email" type="text" class="form-control login-input" [ngClass]="applyCssError('email')"
+            placeholder="Usuário">
+          <div class="error-feedback" *ngIf="submitted && form.email.errors">
+            <p *ngIf="loginFormValidation.formMsg">{{ loginFormValidation.formMsg }}</p>
+            <p *ngIf="loginFormValidation.emailMsg">{{ loginFormValidation.emailMsg }}</p>
+          </div>
+          <input formControlName="password" type="password" class="form-control mt-3 login-input"
+            [ngClass]="applyCssError('password')" placeholder="Senha">
+          <div class="error-feedback" *ngIf="submitted && form.email.errors">
+            <p *ngIf="loginFormValidation.formMsg">{{ loginFormValidation.formMsg }}</p>
+            <p *ngIf="loginFormValidation.passwordMsg">{{ loginFormValidation.passwordMsg }}</p>
+          </div>
+          <div class="remember-me">
+            <input class="form-check-input mt" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label ml-4" for="defaultCheck1">
+              Lembrar-me
+            </label>
+          </div>
+
+          <div class="action">
+            <button type="submit" class="btn btn-login">Entrar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+</div>

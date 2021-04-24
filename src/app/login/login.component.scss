@@ -1,0 +1,96 @@
+@import "../../styles/abstracts/variables";
+@import "../../styles/base/typography";
+
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@700&display=swap");
+
+.container-fluid {
+  width: 100%;
+  height: 100%;
+  background-color: $bg-color-login;
+
+  .bg-atlas {
+    min-width: 768px;
+    height: 660px;
+    background-repeat: no-repeat;
+  }
+
+  .form-container {
+    margin-top: 80px;
+    color: $font-light-blue;
+    img {
+      width: 42px;
+      height: 36px;
+    }
+    .title-logo {
+      font-family: "Exo 2", sans-serif;
+
+      span {
+        font-size: $font-size-small;
+      }
+    }
+    h6 {
+      color: $font-white;
+    }
+    p {
+      color: $font-light-blue;
+      font-size: $font-size-medium;
+    }
+  }
+
+  .form-group {
+    margin-top: 16px;
+    input[type="text"],
+    input[type="password"] {
+      background: linear-gradient(90deg, #4953b8 0%, rgba(73, 83, 184, 0.2) 100%);
+      width: 400px;
+      height: 80px;
+      color: $font-white;
+      // border: 0px solid $bg-color;
+
+      .is-invalid {
+        border: 2px solid $bg-color;
+        border-color: $bg-color;
+      }
+    }
+  }
+
+  .error-feedback p {
+    margin-top: 10px;
+    color: $font-white;
+    font-size: $font-size-small;
+  }
+
+  ::-webkit-input-placeholder {
+    color: $font-light-blue;
+  }
+  .remember-me {
+    margin-top: 34px;
+  }
+
+  input[type="checkbox"] {
+    margin-left: unset;
+    background: linear-gradient(90deg, #4953b8 0%, rgba(73, 83, 184, 0.2) 100%);
+    border: none;
+    width: 25px;
+    height: 25px;
+    color: $font-white;
+
+    &:focus {
+      box-shadow: 0 0 0 0;
+      border: 0 none;
+      outline: 0;
+    }
+  }
+  .action {
+    margin-top: 34px;
+    .btn-login {
+      width: 400px;
+      height: 80px;
+      background: $blue-02;
+      border-radius: 0px 5px 5px 0px;
+      font-size: $font-body;
+      color: $font-white;
+      outline: 0px;
+    }
+  }
+}
