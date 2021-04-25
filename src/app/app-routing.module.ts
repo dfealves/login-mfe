@@ -6,7 +6,7 @@ import { EmptyRouteComponent } from './empty-route/empty-route.component'
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: 'login', pathMatch: 'full',
     loadChildren: () => import('./login/login.module').then((mod) => mod.LoginModule)
   },
   {
