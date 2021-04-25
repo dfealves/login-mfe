@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 
-import { EmailValidator, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { catchError, tap } from 'rxjs/operators'
+import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 
 
 import { AuthService } from '../auth/auth.service';
 
 import { assetUrl } from '../../asset-url';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -85,8 +85,8 @@ export class LoginComponent implements OnInit {
   }
 
   checkPermissions() {
-    const permissionViewHome = this.authService.checkUserPermissions("VIEW_HOME");
-    console.log(permissionViewHome);
+    // const permissionViewHome = this.authService.checkUserPermissions("VIEW_HOME");
+    // console.log(permissionViewHome);
   }
 
   clearValidation() {
