@@ -36,17 +36,4 @@ export class AuthService {
     return this.userAuthentication;
   }
 
-
-
-  // gerenciar permissões
-  checkUserPermissions(permissionRequired: string): boolean {
-    const sessionStorageUser = sessionStorage.getItem('authUser');
-    const authUser = sessionStorageUser ? JSON.parse(sessionStorageUser) : '';
-    const permissionUser = authUser.user?.permissions.find(
-      (element) => {
-        return element === permissionRequired
-      }
-    );
-    return permissionUser ? true : false;
-  }
 }
