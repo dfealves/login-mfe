@@ -71,16 +71,16 @@ export class LoginComponent implements OnInit {
       catchError((error: HttpErrorResponse) => {
         this.loginFormValidation.formMsg = ''
 
-        if (error.statusText === 'Unauthorized' || error.status === 422 || error.status === 401) {
-          this.loginFormValidation.formMsg = 'Verifique seus dados de login e/ou senha e tente novamente';
+        if (error.statusText === 'Unauthorized' || error.status === 422 || error.status === 401 || error.status === 400) {
+
           this.loginForm.controls['email'].setErrors({ 'incorrect': true });
           this.loginForm.controls['password'].setErrors({ 'incorrect': true });
+          this.loginFormValidation.formMsg = 'Verifique seus dados de login e/ou senha e tente novamente';
         }
-
         return throwError(error);
       })
     ).subscribe()
-    this.clearValidation();
+    // this.clearValidation();
 
   }
 
@@ -112,6 +112,8 @@ export class LoginComponent implements OnInit {
   }
 
   applyCssError(field: string): { 'is-invalid': boolean } {
+    this.loginFormValidation.formMsg = 'Verifique seus dados de login e/ou senha e tente novamente';
+    console.log(this.submitted, this.loginForm.get(field).valid, this.loginFormValidation.formMsg)
     return {
       'is-invalid': (this.submitted && !this.loginForm.get(field).valid)
     }

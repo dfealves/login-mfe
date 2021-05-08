@@ -19,14 +19,12 @@
           <input formControlName="email" type="text" class="form-control login-input" [ngClass]="applyCssError('email')"
             placeholder="Usuário">
           <div class="error-feedback" *ngIf="submitted && form.email.errors">
-            <p *ngIf="loginFormValidation.formMsg">{{ loginFormValidation.formMsg }}</p>
-            <p *ngIf="loginFormValidation.emailMsg">{{ loginFormValidation.emailMsg }}</p>
+            <p>{{ loginFormValidation?.formMsg }}</p>
           </div>
           <input formControlName="password" type="password" class="form-control mt-3 login-input"
             [ngClass]="applyCssError('password')" placeholder="Senha">
           <div class="error-feedback" *ngIf="submitted && form.email.errors">
-            <p *ngIf="loginFormValidation.formMsg">{{ loginFormValidation.formMsg }}</p>
-            <p *ngIf="loginFormValidation.passwordMsg">{{ loginFormValidation.passwordMsg }}</p>
+            <p>{{ loginFormValidation.formMsg }}</p>
           </div>
           <div class="remember-me">
             <input class="form-check-input mt" type="checkbox" value="" id="defaultCheck1">
