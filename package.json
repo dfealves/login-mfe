@@ -29,6 +29,7 @@
     "single-spa-angular": "^4.9.2",
     "systemjs-webpack-interop": "^2.3.6",
     "tslib": "^2.0.0",
+    "utils-atlasware": "^1.0.0",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {

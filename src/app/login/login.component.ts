@@ -6,8 +6,8 @@ import { catchError, tap } from 'rxjs/operators'
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 
-
 import { AuthService } from '../auth/auth.service';
+import { userAuthentication } from 'utils-atlasware';
 
 import { assetUrl } from '../../asset-url';
 
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkPermissions();
-    if (this.authService.checkUserIsAuthenticated()) {
+    if (userAuthentication) {
       this.router.navigate(['/dashboard'])
     }
   }
