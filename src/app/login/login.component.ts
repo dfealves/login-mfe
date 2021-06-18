@@ -44,7 +44,6 @@ export class LoginComponent implements OnInit {
 
     this.loginForm.valueChanges.pipe(
       tap((res) => {
-        console.log(res);
         return res
       })
     ).subscribe();
@@ -58,16 +57,11 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.loginForm.valid)
     this.submitted = true;
     const body = this.loginForm.value;
-    this.authService.signIn(body).pipe(
-      // tipar response quando alinhar o contrato
-      tap((response: any) => {
-        sessionStorage.setItem('authUser', JSON.stringify(response));
-        console.log(response);
-        this.router.navigate(['/dashboard']);
-      }),
+    this.authService.signIn(body).subscribe(() => {
+      this.router.navigateByUrl('/dashboard');
+    },
       catchError((error: HttpErrorResponse) => {
         this.loginFormValidation.formMsg = ''
 
@@ -79,7 +73,7 @@ export class LoginComponent implements OnInit {
         }
         return throwError(error);
       })
-    ).subscribe()
+    )
     // this.clearValidation();
 
   }
@@ -113,7 +107,6 @@ export class LoginComponent implements OnInit {
 
   applyCssError(field: string): { 'is-invalid': boolean } {
     this.loginFormValidation.formMsg = 'Verifique seus dados de login e/ou senha e tente novamente';
-    console.log(this.submitted, this.loginForm.get(field).valid, this.loginFormValidation.formMsg)
     return {
       'is-invalid': (this.submitted && !this.loginForm.get(field).valid)
     }

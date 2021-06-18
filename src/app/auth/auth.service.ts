@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+import { tap, shareReplay } from 'rxjs/operators'
+
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -22,18 +24,15 @@ export class AuthService {
         Accept: 'application/json',
       })
     }
-    return this.http.post(url, body)
+    return this.http.post(url, body).pipe(
+      tap(res => {
+        this.setSession(res)
+      }),
+      shareReplay()
+    )
   }
 
-  checkUserIsAuthenticated(): boolean {
-    const sessionStorageUser = sessionStorage.getItem('authUser');
-
-    if (sessionStorageUser) {
-      this.userAuthentication = true;
-    } else {
-      this.userAuthentication = false;
-    }
-    return this.userAuthentication;
+  private setSession(response) {
+    sessionStorage.setItem('authUser', JSON.stringify(response));
   }
-
 }
